@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import LoginUser from './pages/LoginUser.vue'
 import RegisterUser from './pages/RegisterUser.vue'
+import OrcCrud from './components/OrcCrud.vue';
 
 const showLogin = ref(false)
 const showRegister = ref(false)
@@ -47,6 +48,9 @@ function logout() {
     <p>You are logged in!</p>
     <button @click="logout">Logout</button>
   </div>
+
+  <OrcCrud />
 </template>
+
 
 <style scoped></style>

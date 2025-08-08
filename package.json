@@ -12,9 +12,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "optional": "^0.1.4",
     "vue": "^3.5.18"
   },
   "devDependencies": {
+    
+    "rollup": "^3.29.4",
     "@vitejs/plugin-vue": "^6.0.1",
     "vite": "^7.0.6",
     "vite-plugin-vue-devtools": "^8.0.0"

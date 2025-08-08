@@ -15,7 +15,7 @@ export default {
       try {
         const res = await fetch('http://localhost:8000/api/register', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             name: this.name,
             email: this.email,
@@ -26,7 +26,7 @@ export default {
         if (res.ok) {
           const loginRes = await fetch('http://localhost:8000/api/login', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
               email: this.email,
               password: this.password
@@ -38,7 +38,14 @@ export default {
             this.$emit('login-success');
           }
         } else {
-          this.error = 'Registration failed';
+          
+if (res.status === 422) {
+  const errorData = await res.json();
+  this.error = Object.values(errorData.errors).flat().join(', ');
+} else {
+  this.error = 'Registration failed';
+}
+
         }
       } catch (e) {
         this.error = 'Registration failed';
